@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>socket.io的demo</title>
+	</head>
+
+	<body>
+
+		<script src="/socket.io/socket.io.js"></script> 
+		<script>
+			var socket = io.connect('http://localhost');
+			socket.on("notice", function(data) {
+				var msg = document.getElementById('all').value;
+				document.getElementById('all').innerText = msg + "\n" + data.message;
+			});
+			var chat_fn = function() {
+				var msg = document.getElementById("message").value;
+				socket.emit("chat", {
+					message: msg
+				});
+			};
+			socket.on("nickname ready", function(data) {
+				alert("nickname changed.");
+			});
+			var change_nickname = function() {
+				var nickname = document.getElementById("nickname").value;
+				socket.emit('set nickname', nickname);
+			};
+		</script>
+		<textarea id="all" cols=40 rows=20></textarea>
+		<br />
+		<label>Message:</label>
+		<input id="message" type="text" name="message" cols=120/>
+		<input id="chat_btn" type="button" value="chat" onclick="javascript:chat_fn()" />
+		<label>NickName:</label>
+		<input id="nickname" typee="text" name="nickname" />
+		<input id="chang_name" type="button" value="nickname" onclick="javascript:change_nickname()" />
+	</body>
+
+</html>
