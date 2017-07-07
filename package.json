@@ -1,19 +1,18 @@
 {
-  "name": "socket.io",
+  "name": "chat-example",
   "version": "1.0.0",
-  "description": "socket demo",
+  "description": "my first socket.io app",
   "main": "app.js",
-  "dependencies": {
-    "express": "^4.15.2",
-    "socket.io": "^1.7.3"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "socket.io"
   ],
-  "author": "hukangwei",
-  "license": "ISC"
+  "author": "yuji",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  }
 }
